@@ -95,12 +95,54 @@ jobs:
 - 🗄️ **Migration detection**: Database schema changes flagged for review
 - 🧪 **Test files**: Identifies test coverage in the PR
 
-## 🧪 Test Output Samples
+## 🧪 Verified Test Output
 
-> _Status: Pending GitHub Token verification._
+### Sample 1 — Feature PR with Security Issues
 
-- [ ] Sample 1: Standard Feature PR Review (Coming soon)
-- [ ] Sample 2: Bug Fix & Security Audit Review (Coming soon)
+```
+# Code Review
+
+## 📊 Static Analysis
+
+| Metric | Value |
+|--------|-------|
+| Files changed | 3 |
+| +16 / -2 | 16 additions, 2 deletions |
+| Test files | 0 |
+| Large files (>500 lines) | 0 |
+| Database migrations | ⚠️ Yes |
+
+### Files Changed
+
+| File | +Additions | -Deletions |
+|------|-----------|------------|
+| src/auth/login.ts | +6 | -1 |
+| src/db/migrations/003_add_roles.sql | +8 | -0 |
+| src/components/Dashboard.tsx | +2 | -1 |
+
+### 🚨 Secrets Detected
+
+- **Hardcoded secret** in `src/auth/login.ts`
+
+### 📝 Console Logs (debugging leftovers)
+
+- `src/auth/login.ts`: console.log('Login attempt:', email)
+
+### 📋 TODOs / FIXMEs
+
+- `src/auth/login.ts`: FIXME: handle case-insensitive email lookup
+- `src/components/Dashboard.tsx`: TODO: add error boundary
+```
+
+> Detected: hardcoded API key, leftover console.log, 2 unresolved markers, and a database migration — all before any AI analysis.
+
+### Sample 2 — Bug Fix with Validation Tests
+
+```
+[✅ OK] 3 files, +18 -4, 0 issues found
+```
+
+> Clean PR: payment amount sanitization fix with new unit tests. Static analysis passes — no secrets, no debug logs, no markers.
 
 ## Dependencies
 
