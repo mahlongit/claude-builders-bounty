@@ -1,7 +1,7 @@
 {
   "name": "Claude Code Weekly Dev Summary",
   "version": "1.0.0",
-  "description": "Automated weekly narrative summary of GitHub repo activity using Claude API. mahlon optimized.",
+  "description": "Automated weekly narrative summary of GitHub repo activity using Claude API.",
   "nodes": [
     {
       "parameters": {
